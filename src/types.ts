@@ -1,3 +1,4 @@
+import type React from 'react';
 import {z} from 'zod';
 
 export const personalInfoSchema = z.object({
@@ -25,3 +26,13 @@ export const billingInfoSchema = z.object({
 export type personalInfo = z.infer<typeof personalInfoSchema>
 export type professionalInfo = z.infer<typeof professionalInfoSchema>
 export type billingInfo = z.infer<typeof billingInfoSchema>
+
+export type StepFormData = personalInfo | professionalInfo | billingInfo;
+
+export type AllFormFields = personalInfo & professionalInfo & billingInfo;
+
+export interface Step{
+    id:string,
+    name:string,
+    icon: React.ComponentType<{className? : string}>;
+}
